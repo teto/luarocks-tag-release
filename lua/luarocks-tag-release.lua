@@ -224,12 +224,12 @@ local function luarocks_tag_release(package_name, package_version, args)
   print_rockspec(rockspec_path)
   test_install_rockspec(package_name, rockspec_path, args, extra_lux_args)
 
-  if args.upload then
+  -- if args.upload then
     upload(args, extra_lux_args)
     test_install_package(package_name, version, args, extra_lux_args)
-  else
-    print('Lux upload disabled for "pull_request" events. Skipping...')
-  end
+  -- else
+  --   print('Lux upload disabled for "pull_request" events. Skipping...')
+  -- end
 
   print('')
   print('Done.')
