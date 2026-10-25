@@ -67,7 +67,7 @@ local args = {
   ),
   summary = getenv_or_empty('INPUT_SUMMARY'),
   detailed_description_lines = Parser.parse_list_args(getenv_or_empty('INPUT_DETAILED_DESCRIPTION')),
-  upload = not is_pull_request,
+  upload = true, -- not is_pull_request,
   license = license_input ~= '' and license_input or nil,
   template = template_input ~= '' and template_input or nil,
   extra_luarocks_args = command_args.extra_luarocks_args,
