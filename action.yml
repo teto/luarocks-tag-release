@@ -127,7 +127,7 @@ runs:
         gpg_private_key: ${{ inputs.gpg_private_key }}
         passphrase: ${{ inputs.gpg_passphrase }}
 
-    - name: Run
+    - name: Upload to luarocks.org and run
       run: >-
         lx --lua-version "${{ inputs.lua_version }}"
         --tree "$RUNNER_TEMP/lux-tree"
