@@ -205,7 +205,9 @@ end
 ---@param args Args
 local function luarocks_tag_release(package_name, package_version, args)
   package_name = package_name:lower()
+  print("version_override for package_version", package_version)
   local version = version_override(package_version)
+  print("Using version", version)
   local extra_lux_args = Lux.with_verbose(
     Lux.with_lua_version(args.lua_version, Lux.combine_args(args.extra_luarocks_args, args.extra_lux_args)),
     args.is_debug
