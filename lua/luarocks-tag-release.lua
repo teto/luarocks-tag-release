@@ -216,16 +216,20 @@ end
 ---@return string rockspec_path
 function M.generate(package_name, package_version, args)
   package_name = package_name:lower()
+  print("generating project ", package_name)
   local version = version_override(package_version)
   local extra_lux_args = extra_args(args)
   local release = resolve_meta(args)
 
+  -- return lux.toml content
   local project = Project.for_release(package_name, project_meta(release, args, version), '.')
   if project.generated then
+    print("Writing generated project")
     write_generated_project(project)
     add_project_dependencies(args, extra_lux_args)
   end
 
+  print("Write custom template")
   write_custom_template(project.directory, args)
 
   local rockspec_path = parse_rockspec_path(run_generate_rockspec(args, extra_lux_args))
