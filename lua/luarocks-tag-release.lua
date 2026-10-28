@@ -63,9 +63,10 @@ end
 
 ---@param args Args
 ---@param extra_lux_args string
+---@param version string|nil
 ---@return string stdout
-local function run_generate_rockspec(args, extra_lux_args)
-  return (OS.execute(Lux.generate_rockspec(extra_lux_args), error, args.is_debug))
+local function run_generate_rockspec(args, extra_lux_args, version)
+  return (OS.execute(Lux.generate_rockspec(extra_lux_args, version), error, args.is_debug))
 end
 
 ---@param stdout string
@@ -227,7 +228,7 @@ function M.generate(package_name, package_version, args)
 
   write_custom_template(project.directory, args)
 
-  local rockspec_path = parse_rockspec_path(run_generate_rockspec(args, extra_lux_args))
+  local rockspec_path = parse_rockspec_path(run_generate_rockspec(args, extra_lux_args, version))
   print_rockspec(rockspec_path)
   test_install_rockspec(package_name, rockspec_path, args, extra_lux_args)
   return rockspec_path
