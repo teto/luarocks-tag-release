@@ -83,7 +83,7 @@ local license_input = getinput_or_empty('license')
 local template_input = getinput_or_empty('template')
 local package_name = getinput_or_empty('name')
 ---@type string | nil
-local package_version = is_pull_request and '0.0.0' or getinput_or_empty('version')
+local package_version = getinput_or_empty('version') or '0.0.0'
 
 ---@type Args
 local args = {
