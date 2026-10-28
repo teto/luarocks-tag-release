@@ -148,7 +148,7 @@ runs:
       shell: bash
 
     - name: Upload rockspec
-      if: github.event_name != 'pull_request'
+      # if: github.event_name != 'pull_request'
       run: >-
         lx --lua-version "${{ inputs.lua_version }}"
         --tree "$RUNNER_TEMP/lux-tree"
@@ -162,7 +162,7 @@ runs:
       shell: bash
 
     - name: Test published package
-      if: github.event_name != 'pull_request'
+      # if: github.event_name != 'pull_request'
       run: >-
         lx --lua-version "${{ inputs.lua_version }}"
         --tree "$RUNNER_TEMP/lux-tree"
